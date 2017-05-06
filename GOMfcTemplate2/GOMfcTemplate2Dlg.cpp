@@ -14,6 +14,8 @@
 #include "GOMfcTemplate2.h"
 #include "GOMfcTemplate2Dlg.h"
 #include "afxdialogex.h"
+using namespace std;
+using namespace cv;
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -29,7 +31,8 @@ DWORD WINAPI CaptureThread(LPVOID lpParameter)
 			break;
 		//从directX中获得当前图像并显示出来
 		IplImage* queryframe  = pDlg->cameraDs.QueryFrame();
-		Mat camframe(queryframe); 
+		//在2.0版本中可以强转，在3.0中需要使用函数
+		Mat camframe = cvarrToMat(queryframe);
 		pDlg->showImage(camframe,IDC_CAM);
 		//采集并显示图像?
 		//注意！这里我将采集到的图像的显示写在了线程中，这样能够强制窗口重画 jsxyhelu 2016年10月30日 

@@ -12,7 +12,8 @@
 #pragma once
 #include "afxwin.h"
 #include "camerads.h"
-
+using namespace std;
+using namespace cv;
 
 // CGOMfcTemplate2Dlg ¶Ô»°¿ò
 class CGOMfcTemplate2Dlg : public CDialogEx
